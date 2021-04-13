@@ -1,73 +1,49 @@
 const inquirer = require('inquirer');
 const Employee = require('./lib/employee.js');
+const Manager = require('./lib/manager.js');
+const Engineer = require('./lib/engineer.js');
+const Intern = require('./lib/intern.js');
 
 
-var defaultQuestion = {
-    type: 'list',
-    name: 'direction',
-    message: 'Are you the Manager?',
-    choices: ['Yes', 'No'],
-  };
+function startApp(){
+  getManager();
+}
 
-  function main() {
-    console.log('Welcom to the Team Generator');
-    areYouTheManger();
-  }
-  
-  function areYouTheManger() {
-    inquirer.prompt(defaultQuestion).then((answers) => {
-      if (answers.direction === 'Yes') {
-        console.log('OK, Welcome. We are going to set up your team.');
-        managerInfo();
-      } else {
-        console.log('Only the manager can set up a team. Try again');
-        areYouTheManger();
-      }
-    });
-  }
-  
-  function managerInfo() {
-    inquirer.prompt([
-        {
-        type: 'input',
-        name: 'employeeName',
-        message: 'What is your name?',
-        },
-        {
-        type: 'input',
-        name: 'managerEmail',
-        message: 'What is your email?',
-        }
+function getManager(){
+  inquirer.prompt([
+  {
+    type: "Input",
+    name: "managerName",
+    message: "What is the manager's name?"
+  },
+  {
+    type: "Input",
+    name: "managerEmail",
+    message: "What is the manager's email?"
+  },
+  {
+    type: "Input",
+    name: "managerId",
+    message: "What is the manager's ID number?"
+  },
+  {
+    type: "Input",
+    name: "managerpPhone",
+    message: "What is the manager's office phone number?"
+  },
 ]).then((answers) => {
-      var direction = answers.employeeName;
-      console.log(direction)
-    });
-  }
+  let manager = new Manager(answers.managerName, answers.managerEmail, answers.managerId,answers.managerpPhone)
+  console.log(manager)
+  nextEmployee()
+})
+}
+
+nextEmployee(){
   
- 
-  
-  main();
+}
 
 
 
 
 
-
-
-
-
-
-      //   if (direction === 'Forward') {
-    //     console.log('You attempt to fight the wolf');
-    //     console.log(
-    //       'Theres a stick and some stones lying around you could use as a weapon'
-    //     );
-    //     encounter2b();
-    //   } else if (direction === 'Right') {
-    //     console.log('You befriend the dwarf');
-    //     console.log('He helps you kill the wolf. You can now move forward');
-    //     encounter2a();
-    //   } else {
-    //     console.log('You cannot go that way');
-    //     encounter1();
-    //   }
+startApp()
