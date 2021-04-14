@@ -1,9 +1,12 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Employee = require('./lib/employee.js');
 const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/intern.js');
+const generateHTML = require('./utils/generateHtml.js');
 
+teamMembers = [];
 //starts application
 function startApp(){
   getManager();
@@ -34,7 +37,7 @@ function getManager(){
   },
 ]).then((answers) => {
   let manager = new Manager(answers.managerName, answers.managerEmail, answers.managerId,answers.managerpPhone)
-  console.log(manager)
+  teamMembers.push(manager)
   nextEmployee()
 })
 }
@@ -45,20 +48,26 @@ function nextEmployee(){
   inquirer.prompt({
     type: "list",
     name: "nextEmployee",
+    message: "Create your team!",
     choices: [
       "Intern",
       "Engineer",
       "No more employyes to add to the team"
     ]
-  }).then((answers) => {
-    console.log(answers)
+  }).then((choice) => {
+    console.log(choice)
     
-  if(answers.nextEmployee === "Intern"){
+  if(choice.nextEmployee === "Intern"){
     getIntern();
-  } else if(answers.nextEmployee === "Engineer"){
+  } else if(choice.nextEmployee === "Engineer"){
     getEngineer();
   } else {
-    generateHtml();
+        const htmlPage = generateHTML(teamMembers);
+
+        fs.writeFile('teams.html', htmlPage, (err) =>
+          err ? console.log(err) : console.log('Successfully created teams page!')
+        );
+
   }
   })
 }
@@ -88,7 +97,9 @@ function getIntern(){
     },
   ]).then((answers) => {
     let intern = new Intern(answers.internName, answers.interEmail, answers.internId,answers.internSchool)
-    console.log(intern)
+
+    teamMembers.push(intern)
+    console.log(teamMembers)
     nextEmployee()
   })
 };
@@ -118,13 +129,11 @@ function getEngineer(){
     },
   ]).then((answers) => {
     let engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.interengineerIdnId,answers.engineerGithub)
-    console.log(engineer)
+    teamMembers.push(engineer)
     nextEmployee()
+    console.log(teamMembers)
   })
 };
 
-// generateHtml(){
-
-// };
 
 startApp()
