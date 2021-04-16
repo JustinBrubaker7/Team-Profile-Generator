@@ -1,6 +1,4 @@
-
-function generateHTML(teamMembers){
-let finalDoc = `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -39,62 +37,84 @@ let finalDoc = `<!DOCTYPE html>
                 <tbody class="bg-white divide-y divide-gray-200">
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  ${teamMembers[0].name}
+                  Justin Brubaker
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  ${teamMembers[0].role}
+                  Manager
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  <a href="mailto:${teamMembers[0].email}">${teamMembers[0].email}</a>  
+                  <a href="mailto:justinbrubaker7@gmail.com">justinbrubaker7@gmail.com</a>  
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  ${teamMembers[0].id}
+                  011
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  ${teamMembers[0].officeNumber}
+                  97 7987 9797
                   </td>
-                </tr>`
-
-for(i=1; i < teamMembers.length; i++){
-    finalDoc += `
+                </tr>
 
 
     <tr>
     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-    ${teamMembers[i].name}
+    Gary Smith
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-    ${teamMembers[i].role}
+    Intern
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-    <a href="mailto:${teamMembers[i].email}">${teamMembers[i].email}</a>  
+    <a href="mailto:email@email.com">email@email.com</a>  
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-    ${teamMembers[i].id}
+    002
     </td>
 
-    `
-      if(teamMembers[i].github !== ""){
-      finalDoc += `
+    
       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-      <a href="https://github.com/${teamMembers[i].github}">${teamMembers[i].github}</a>  
+      <a href="https://github.com/undefined">undefined</a>  
       </td>
-      `
-      } else if(teamMembers[i].school !== ""){
-        finalDoc += `
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-        ${teamMembers[i].school}
-        </td>
-        `
-        } else {
-          finalDoc += ``
-        }
+      
 
 
+    <tr>
+    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+    Mary Lou
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    Engineer
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    <a href="mailto:mail@gmail.com">mail@gmail.com</a>  
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    004
+    </td>
 
-}
+    
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      <a href="https://github.com/justinbrubaker7">justinbrubaker7</a>  
+      </td>
+      
 
-finalDoc += `
+
+    <tr>
+    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+    BOBBY
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    Intern
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    <a href="mailto:mail.com">mail.com</a>  
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    006
+    </td>
+
+    
+      <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+      <a href="https://github.com/undefined">undefined</a>  
+      </td>
+      
 </tr>
 </tbody>
 </table>
@@ -104,11 +124,4 @@ finalDoc += `
 </div>
 </body>
 </html>
-
-`
-    return finalDoc
-  
-  }
-
-module.exports = generateHTML;
 

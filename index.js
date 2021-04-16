@@ -36,7 +36,7 @@ function getManager(){
     message: "What is the manager's office phone number?"
   },
 ]).then((answers) => {
-  let manager = new Manager(answers.managerName, answers.managerEmail, answers.managerId,answers.managerpPhone)
+  let manager = new Manager(answers.managerName, answers.managerId,answers.managerEmail, answers.managerpPhone, "Manager")
   teamMembers.push(manager)
   nextEmployee()
 })
@@ -95,7 +95,7 @@ function getIntern(){
       message: "What is the intern school?"
     },
   ]).then((answers) => {
-    let intern = new Intern(answers.internName, answers.interEmail, answers.internId,answers.internSchool)
+    let intern = new Intern(answers.internName, answers.internId, answers.interEmail, answers.internSchool, "Intern")
 
     teamMembers.push(intern)
     console.log(teamMembers)
@@ -127,7 +127,7 @@ function getEngineer(){
       message: "What is the engineers github username?"
     },
   ]).then((answers) => {
-    let engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineeId,answers.engineerGithub)
+    let engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub, "Engineer")
     teamMembers.push(engineer)
     console.log(teamMembers)
     nextEmployee()
