@@ -54,9 +54,7 @@ function nextEmployee(){
       "Engineer",
       "No more employyes to add to the team"
     ]
-  }).then((choice) => {
-    console.log(choice)
-    
+  }).then((choice) => {    
   if(choice.nextEmployee === "Intern"){
     getIntern();
   } else if(choice.nextEmployee === "Engineer"){
@@ -73,6 +71,7 @@ function nextEmployee(){
 }
 
 
+//this function creates the intern
 function getIntern(){
   inquirer.prompt([
     {
@@ -104,7 +103,7 @@ function getIntern(){
   })
 };
 
-
+//this function creates the Engineer
 function getEngineer(){
   inquirer.prompt([
     {
@@ -128,12 +127,16 @@ function getEngineer(){
       message: "What is the engineers github username?"
     },
   ]).then((answers) => {
-    let engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.interengineerIdnId,answers.engineerGithub)
+    let engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineeId,answers.engineerGithub)
     teamMembers.push(engineer)
-    nextEmployee()
     console.log(teamMembers)
+    nextEmployee()
+
   })
 };
+
+
+
 
 
 startApp()
